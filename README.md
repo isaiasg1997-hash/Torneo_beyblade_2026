@@ -1,5 +1,4 @@
-# Torneo_beyblade_2026
-solicitud para desarrollar un torneo 
+
 Proyecto: Super Final Beyblade Avanzado
 Archivos en este ZIP:
 - index.html
