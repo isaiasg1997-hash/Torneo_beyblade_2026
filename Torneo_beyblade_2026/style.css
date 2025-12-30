@@ -1,0 +1,1064 @@
+:root{
+  --neon: #ff0000;
+  --bg-alpha: rgba(102, 102, 102, 0.6);
+  --panel: rgba(27,27,27,0.7);
+}
+
+body{
+  margin:0;
+  padding:0;
+  font-family:'Orbitron', Arial, sans-serif;
+  color:var(--neon);
+
+  /* De rojo (izquierda) a azul (derecha) */
+  background: linear-gradient(135deg, #00b3ff, #203a43, #ff0000);
+  background-attachment: fixed;
+
+  text-align:center;
+  text-shadow:0 0 5px #000000;
+}
+
+header {
+  text-align: center;
+  padding: 25px;
+  background: linear-gradient(135deg, #00b3ff, #203a43, #ff0000);
+  color: #fff;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de rayos animados detrás del header */
+header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,255,255,0.2) 0%, transparent 70%);
+  animation: spin 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px #00eaff, 0 0 30px #00eaff;
+  position: relative;
+  z-index: 1;
+}
+
+header .sub {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #a0e7ff;
+  text-shadow: 0 0 5px #00cfff;
+  position: relative;
+  z-index: 1;
+}
+
+header .reglas {
+  background: rgba(0,0,0,0.35);
+  display: inline-block;
+  padding: 20px 30px;
+  border-radius: 12px;
+  text-align: left;
+  border: 1px solid #00eaff;
+  box-shadow: 0 0 15px rgba(0, 234, 255, 0.4);
+  position: relative;
+  z-index: 1;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 10px rgba(0,234,255,0.3); }
+  100% { box-shadow: 0 0 25px rgba(0,234,255,0.6); }
+}
+
+header .reglas h2 {
+  font-size: 2rem;             /* Antes 1.6 */
+  margin-bottom: 16px;         /* Antes 12 */
+  color: #00eaff;
+  text-shadow: 0 0 14px #00eaff;
+}
+
+/* Lista base */
+header .reglas ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ítems ampliados */
+header .reglas ul li {
+  font-size: 1.3rem;           /* Antes 1.1 */
+  line-height: 2;              /* Antes 1.8 */
+  margin-bottom: 10px;         /* Antes 6px */
+  color: #d9efff;
+  padding-left: 32px;          /* Antes 25px */
+  position: relative;
+}
+
+/* Icono futurista ampliado */
+header .reglas ul li::before {
+  content: "⚡";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 1.5rem;           /* Antes 1.2 */
+  animation: blink 1.3s infinite alternate; /* Más ágil */
+}
+
+/* Animación de parpadeo futurista */
+@keyframes blink {
+  0% { opacity: 0.2; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 0.2; transform: scale(0.9); }
+}
+
+/* Preview circular (imagen pequeña) */
+.form-preview {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  flex: 0 0 56px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.15));
+  border: 2px solid rgba(255,255,255,0.06);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.45), 0 0 8px rgba(0,230,255,0.06) inset;
+}
+
+/* Imagen dentro del preview */
+.form-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+}
+
+/* Input de texto (nombre) — toma el espacio restante */
+.form-row input[type="text"],
+.form-row input[type="search"] {
+  flex: 1 1 auto;
+  min-width: 110px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: 0.98rem;
+  box-shadow: 0 0 10px rgba(0,234,255,0.03);
+}
+
+/* Input file: lo hacemos visualmente más pequeño y claro */
+.form-row input[type="file"] {
+  flex: 0 0 140px;
+  padding: 6px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer;
+}
+
+/* En pantallas pequeñas, apilamos los elementos para mejor usabilidad */
+@media (max-width: 700px) {
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .form-preview {
+    margin: 0 auto;
+    flex: 0 0 72px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .form-row input[type="file"] {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+/* Pequeña variación visual para el lado A (celeste) y B (rojo) */
+/* No sobrescribe tus estilos base: solo añade acento a la fila */
+.form-torneo.A .form-row { box-shadow: 0 6px 18px rgba(0,179,255,0.03); }
+.form-torneo.B .form-row { box-shadow: 0 6px 18px rgba(255,0,0,0.03); }
+
+/* Estética del placeholder dentro de preview (cuando no hay imagen) */
+.form-preview.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.35);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+}
+
+/* Ajuste para inputs generados por JS: tamaño fijo del nombre si se quiere */
+/* .form-row input[type="text"] { max-width: 420px; }  opcional */
+
+/* CONTENEDOR GENERAL */
+.formularios{
+  display:flex;
+  gap:25px;
+  justify-content:center;
+  margin:15px;
+  flex-wrap:wrap;
+}
+
+/* TARJETAS FUTURISTAS */
+.form-torneo {
+  position: relative;
+  padding: 28px;                     /* más grande */
+  margin: 20px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.45);
+  box-shadow: 0 0 25px rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+/* BORDE NEÓN ANIMADO */
+.form-torneo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px;
+  border-radius: inherit;
+
+  background: linear-gradient(135deg, #00eaff, #003b55, #ff0000, #00ff88);
+  background-size: 300% 300%;
+  animation: formBorderMove 6s linear infinite;
+
+  -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+
+  z-index: 0;
+}
+
+@keyframes formBorderMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* CONTENIDO POR ENCIMA */
+.form-torneo > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* FORMULARIO A – Celeste futurista */
+#formA {
+  background: rgba(0, 149, 255, 0.1);
+  border-radius: 12px;
+  padding: 18px;
+  border: 2px solid #03baff;
+  box-shadow: 0 0 15px rgba(0,149,255,0.4);
+}
+
+/* FORMULARIO B – Rojo futurista */
+#formB {
+  background: rgba(255, 0, 0, 0.10);
+  border-radius: 12px;
+  padding: 18px;
+  border: 2px solid #ff0033;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
+
+/* GRID DE INPUTS */
+/* Convertimos la lista de inputs en filas verticales (JS añade .form-row) */
+.jugadores-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+}
+
+/* INPUTS FUTURISTAS */
+.jugadores-form input {
+  width: 95%;
+  padding: 7px;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: 1rem;
+  transition: 0.2s;
+  box-shadow: 0 0 8px rgba(0,234,255,0.2);
+}
+
+.jugadores-form input:focus {
+  border-color: #00ffff;
+  box-shadow: 0 0 15px #00eaff;
+  outline: none;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+/* Hover sutil sobre la fila */
+.form-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+
+.player-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.player-input input[type="text"] {
+  flex: 1;
+}
+
+.input-img {
+  width: 120px;
+}
+
+.img-preview {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #222;
+  border: 2px solid var(--neon);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+/* BOTONES FUTURISTAS */
+.acciones{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin:18px;
+}
+
+.acciones button{
+  padding:10px 16px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+
+  background: linear-gradient(90deg, #00eaff 0%, #0088ff 100%);
+  color:#000;
+  font-weight:bold;
+  text-shadow: 0 0 5px #00f2ff;
+
+  box-shadow: 0 0 12px rgba(0,212,255,0.7);
+  transition: 0.2s;
+}
+
+.acciones button:hover{
+  transform: scale(1.07);
+  box-shadow: 0 0 18px rgba(0,255,255,1);
+}
+
+/* TÍTULOS FUTURISTAS */
+.form-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 18px;
+  padding: 10px 18px;
+  border-radius: 10px;
+
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(4px);
+
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+/* Borde animado */
+.form-title::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+
+  background: linear-gradient(135deg, #00eaff, #00ffbb, #ff0044, #00c2ff);
+  background-size: 300% 300%;
+  animation: titleBorder 4s linear infinite;
+
+  -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+
+  z-index: -1;
+}
+
+@keyframes titleBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* COLOR ESPECÍFICO FORMULARIO A (CELESTE) */
+.form-title.A {
+  color: #00eaff;
+  text-shadow: 0 0 12px #00eaff;
+}
+
+/* COLOR ESPECÍFICO FORMULARIO B (ROJO) */
+.form-title.B {
+  color: #ff4b4b;
+  text-shadow: 0 0 12px #ff2a2a;
+}
+
+/* ===========================================================
+   ESTILO DE CADA JUGADOR EN EL BRACKET
+   Imagen redonda arriba + nombre abajo
+   =========================================================== */
+
+.bracket-player { /* tarjeta del jugador */
+  width: 130px;
+  min-height: 55px;
+  padding: 4px 3px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.bracket-player:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,255,255,0.4);
+}
+
+/* Imagen circular */
+.bracket-avatar {
+  width: 50px;
+  height: 45px;
+  border-radius: 45%;
+  background: #000;
+  overflow: hidden;
+  border: 2px solid rgba(0,255,255,0.4);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.bracket-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Nombre */
+.bracket-name {
+  margin-top: 2px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  max-width: 95%;
+  word-wrap: break-word;
+}
+
+
+/* ================================
+   ESTRUCTURA PRINCIPAL DEL LAYOUT
+   ================================ */
+
+.bracket-area{
+  display:flex;
+  flex-direction:column; /* TORNEO A y B ARRIBA, final abajo */
+  gap:20px;
+  align-items:center;
+  padding:20px;
+}
+
+/* Fila superior con Torneo A y Torneo B */
+.torneos-superiores{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  width:100%;
+}
+
+/* Torneos A y B */
+.torneo{
+  background:var(--panel);
+  padding:12px;
+  border-radius:10px;
+  border:2px solid rgba(255,255,255,0.05);
+  min-width:240px;
+  
+}
+.torneo h2{
+  margin-top:0;
+}
+/* ===========================================================
+   ESTILO GENERAL DE LAS RONDAS (16avos, 8vos, cuartos, etc.)
+   =========================================================== */
+
+.ronda {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 10px 0;
+}
+
+
+/* Jugadores A - celeste */
+#torneoA .player {
+  background: radial-gradient(circle, #00b3ff 0%, #00b3ff 100%);
+  border: 1px solid #005f80;
+  color: #fff;
+  padding:8px 10px;
+  border-radius:6px;
+  cursor:pointer;
+  width:160px;
+  margin:auto;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Jugadores B - rojo */
+#torneoB .player {
+  background: radial-gradient(circle, #ff0000 0%, #ff0000 100%);
+  border: 1px solid #880000;
+  color: #fff;
+  padding:8px 10px;
+  border-radius:6px;
+  cursor:pointer;
+  width:160px;
+  margin:auto;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover para ambos lados */
+#torneoA .player:hover,
+#torneoB .player:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+
+/* Jugador seleccionado */
+#torneoA .player.selected,
+#torneoB .player.selected {
+  background: gold; 
+  color: #000;
+  box-shadow: 0 0 12px gold;
+}
+
+/* Perdedor */
+.player.perdedor {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Animación de rayos si la tenías */
+.player.rayos{
+  animation:rayos 0.8s ease-in-out;
+} 
+
+/* ========================================
+   TORNEO FINAL COMPLETO 16:9 (OCUPA PANTALLA)
+   ======================================== */
+
+.torneo-final {
+  position: relative;
+
+  background: url('assets/img/fondo-torneo.png') no-repeat center top;
+  background-size: cover;
+
+  padding: 30px; /* más espacio interno */
+  border-radius: 20px;
+
+  border: 3px solid rgba(0, 234, 255, 0.8);
+  box-shadow: 
+    0 0 15px rgba(0, 234, 255, 0.5),
+    0 0 35px rgba(0, 234, 255, 0.3),
+    inset 0 0 12px rgba(0, 234, 255, 0.25);
+
+  width: 95vw; /* casi todo el ancho de la ventana */
+  max-width: 1800px; /* opcional, para no exceder cierto tamaño */
+  aspect-ratio: 16 / 9;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  overflow: hidden;
+  animation: bordePulse 3s ease-in-out infinite alternate;
+}
+
+/* --- OSCURECEDOR DEL BACKGROUND --- */
+.torneo-final::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.45); /* AJUSTA LA INTENSIDAD */
+  z-index:0;
+}
+/* Animación opcional */
+@keyframes bordePulse{
+  from {
+    box-shadow: 
+      0 0 10px rgba(0, 234, 255, 0.3),
+      0 0 20px rgba(0, 234, 255, 0.2),
+      inset 0 0 6px rgba(0, 234, 255, 0.15);
+  }
+  to {
+    box-shadow: 
+      0 0 14px rgba(0, 234, 255, 0.6),
+      0 0 30px rgba(0, 234, 255, 0.35),
+      inset 0 0 10px rgba(0, 234, 255, 0.3);
+  }
+}
+
+/* Para que el contenido quede encima del overlay */
+.torneo-final > *{
+  position:relative;
+  z-index:1;
+}
+
+.final-grid{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  height:100%; /* llenar el área del 16:9 */
+}
+
+/* Nuevo sistema para avanzar hacia el centro */
+.final-horizontal{
+  display:grid;
+  grid-template-columns:1fr auto 1fr; /* IZQ – CENTRO – DER */
+  height:100%;
+  align-items:center;
+  gap:40px;
+}
+
+/* columnas laterales */
+.lado-final{
+  display:flex;
+  flex-direction:row;
+  gap: 10px;
+}
+
+.lado-A{
+  justify-content:flex-start;
+}
+
+/* Jugadores Lado A - celeste */
+.lado-A .player {
+  background: radial-gradient(circle, #00b3ff 0%, #00b3ff 100%);
+  border: 2px solid #005f80;
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lado-A .player:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 8px rgba(160, 231, 255, 0.7); /* brillo celeste */
+}
+
+/* OCTAVOS lado A */
+#F-A-1 {
+    margin-top: 0;      
+    gap: 10px;          /* separación suave entre partidos */
+}
+
+/* CUARTOS Lado A*/
+#F-A-2 {
+    margin-top: 90px;   /* baja ligeramente los cuartos */
+    gap: 200px;         /* aumenta el espacio vertical entre partidos */
+}
+
+/* SEMIFINAL Lado A*/
+#F-A-3 {
+    margin-top: 270px;  /* aún más abajo para formar el triángulo */
+    gap: 140px;         /* espacio grande y limpio */
+}
+
+.lado-B{
+    flex-direction: row-reverse;   /* invierte los bloques */
+    justify-content: flex-start;   /* los mantiene pegados hacia el centro */
+}
+
+/* Jugadores Lado B - rojo */
+.lado-B .player {
+  background: radial-gradient(circle, #ff0000 0%, #ff0000 100%);
+  border: 2px solid #880000;
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lado-B .player:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 8px rgba(255, 154, 154, 0.7); /* brillo rojo */
+}
+
+
+/* OCTAVOS lado B */
+#F-B-1 {
+    margin-top: 0;      
+    gap: 10px;          /* separación suave entre partidos */
+}
+
+/* CUARTOS Lado B*/
+#F-B-2 {
+    margin-top: 90px;   /* baja ligeramente los cuartos */
+    gap: 200px;         /* aumenta el espacio vertical entre partidos */
+}
+
+/* SEMIFINAL Lado B*/
+#F-B-3 {
+    margin-top: 270px;  /* aún más abajo para formar el triángulo */
+    gap: 140px;         /* espacio grande y limpio */
+}
+
+/* ======================================
+   LINEAS DE CONEXIÓN BRACKET - TORNEO
+   ====================================== */
+/* Estados especiales */
+.player.selected {
+  background: gold; 
+  color: #000;
+  box-shadow: 0 0 12px gold;
+}
+
+.player.perdedor {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.player.rayos {
+  animation: rayos 0.8s ease-in-out;
+}
+
+
+.ronda-final {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ronda-final .match,
+.ronda-final .player {
+    width: 120px;        /* tamaño fijo o ajústalo */
+    padding: 6px 8px;
+    font-size: 14px;
+}
+
+.match{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  position:relative;
+  font-size: 20px;
+}
+
+/* ===========================================================
+   SUPER FINAL
+   =========================================================== */
+
+.super-final-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+#superMatch {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin-top: 8px;
+  margin-left: 0px;
+}
+
+#superMatch .player {
+  width: 100px;
+  background: rgba(255,255,255,0.05);
+  padding: 4px 6px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#superGanador {
+  margin-top: 10px;
+  font-size: 2.2rem;
+  color: gold;
+  text-shadow: 0 0 14px rgba(255,215,0,0.6);
+}
+
+
+.super-final-box{
+  background:rgba(0,0,0,0.5);
+  padding:10px;
+  border-radius:8px;
+  border:1px solid rgba(152, 152, 152, 0.06);
+}
+
+/* ===========================================================
+   LADO A (celeste) y LADO B (rojo) - solo bordes/neón
+   =========================================================== */
+
+/* ==========================
+   Superfinal adaptada al bracket
+   ========================== */
+
+/* Tarjeta del jugador */
+#super1, #super2 {
+  width: 130px;
+  min-height: 55px;
+  padding: 4px 3px;
+  background: rgba(255,255,255,0.04); /* transparente/futurista */
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: transform .15s ease, box-shadow .15s ease;
+  margin: 5px auto; /* centrado */
+}
+
+#super1:hover, #super2:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,255,255,0.4);
+}
+
+/* Imagen circular */
+#super1 .bracket-avatar,
+#super2 .bracket-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #000;
+  overflow: hidden;
+  border: 2px solid rgba(0,255,255,0.4);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+#super1 .bracket-avatar img,
+#super2 .bracket-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Nombre */
+#super1 .bracket-name,
+#super2 .bracket-name {
+  margin-top: 2px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  max-width: 95%;
+  word-wrap: break-word;
+}
+
+/* Estados especiales */
+.super-final-zone .player.selected,
+#super1.selected,
+#super2.selected {
+  background: rgba(0,255,0,0.15); /* verde tenue para ganador */
+  color: #000;
+  box-shadow: 0 0 12px rgba(0,255,0,0.9);
+}
+
+.super-final-zone .player.perdedor,
+#super1.perdedor,
+#super2.perdedor {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.super-final-zone .player.rayos,
+#super1.rayos,
+#super2.rayos {
+  animation: rayos 0.8s ease-in-out;
+}
+
+
+/* LADO A */
+.lado-final.lado-A .bracket-player,
+.lado-izq .bracket-player {
+  border-color: rgba(0, 180, 255, 0.25);   /* borde tenue */
+  box-shadow: 0 0 12px rgba(0, 180, 255, 0.35); /* glow azul */
+  background: rgba(0, 180, 255, 0.05); /* transparencia futurista */
+}
+
+/* LADO B */
+.lado-final.lado-B .bracket-player,
+.lado-der .bracket-player {
+  border-color: rgba(255, 50, 50, 0.25);  /* borde tenue */
+  box-shadow: 0 0 12px rgba(255, 50, 50, 0.35); /* glow rojo */
+  background: rgba(255, 50, 50, 0.05); /* transparencia futurista */
+}
+
+/* Superfinal - LADO A */
+.super-final-zone .lado-A .player,
+#super1 {
+  background: rgba(0,180,255,0.05);  /* azul tenue/futurista */
+  border: 2px solid rgba(0,120,255,0.5);
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.super-final-zone .lado-A .player:hover,
+#super1:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.7);
+}
+
+/* Superfinal - LADO B */
+.super-final-zone .lado-B .player,
+#super2 {
+  background: rgba(255,50,50,0.05);  /* rojo tenue/futurista */
+  border: 2px solid rgba(180,0,0,0.5);
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.super-final-zone .lado-B .player:hover,
+#super2:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(255,80,80,0.7);
+}
+
+/* Texto del campeón */
+.ganador {
+  font-size: 64px;          /* tamaño grande */
+  font-weight: 900;         /* muy llamativo */
+  color: gold;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+
+  text-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.8),
+    0 0 20px rgba(255, 215, 0, 0.6),
+    0 0 30px rgba(255, 215, 0, 0.4);
+
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Animación épica del ganador */
+.anim-ganador {
+  animation: ganadorEpic 1.3s ease-out forwards;
+}
+
+@keyframes ganadorEpic {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+    filter: blur(8px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+    filter: blur(2px);
+    text-shadow:
+      0 0 15px gold,
+      0 0 30px rgba(255, 215, 0, 0.8),
+      0 0 45px rgba(255, 215, 0, 0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Animaciones */
+@keyframes rayos{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.18) rotate(6deg)}
+  100%{transform:scale(1)}
+}
+
+footer{
+  padding:12px;
+  opacity:0.7;
+  font-size:2rem;
+  color: #00f2ff;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media(max-width:1000px){
+  .bracket-area{flex-direction:column; align-items:center}
+  .torneos-superiores{flex-direction:column}
+  .torneo-final{width:100%}
+}
+
+/* EFECTO DE ENTRADA */
+.ganador.show {
+    animation: ganadorEntrada 0.9s ease-out forwards, ganadorBrillo 2s infinite alternate;
+}
+

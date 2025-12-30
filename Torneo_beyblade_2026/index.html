@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super Final Beyblade Avanzado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Torneo nacional beyblade X Iquique 2026</h1>
+    <p class="sub">¡Prepárate para la batalla más épica! ⚡</p>
+
+    <!-- Reglas principales de Beyblade X -->
+    <div class="reglas">
+      <h2>Reglas Principales</h2>
+      <ul>
+        <li>🌀 Cada jugador lanza su Beyblade dentro del estadio.</li>
+        <li>💥 La batalla termina cuando un Beyblade se detiene o sale del estadio.</li>
+        <li>🏆 Se otorgan puntos por KO, Burst y Spin Finish.</li>
+        <li>🔁 Se juega al mejor de 3 rondas por enfrentamiento.</li>
+        <li>⏱️ Respeta el tiempo límite de 3 minutos por batalla.</li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="formularios">
+      <div class="form-torneo">
+        <div class="form-title A">REGISTRO LADO A</div>
+        <form id="formA" class="jugadores-form">
+
+          <!-- Se generarán 16 filas como esta desde JS -->
+          <!-- Estructura base para A (Tú JS luego la duplica y personaliza) -->
+          <!--
+          <div class="player-input">
+            <div class="img-preview">
+              <img src="" alt="">
+            </div>
+            <input type="file" accept="image/*" class="input-img">
+            <input type="text" class="input-name" placeholder="Nombre del jugador">
+          </div>
+          -->
+
+        </form>
+      </div>
+
+      <div class="form-torneo">
+        <div class="form-title B">REGISTRO LADO B</div>
+        <form id="formB" class="jugadores-form">
+
+          <!-- Igual que A, pero JS generará los 16 bloques -->
+
+        </form>
+      </div>
+    </section>
+
+    <div class="acciones">
+      <button id="crearBtn">Crear Torneo A y B</button>
+      <button id="resetBtn">Resetear Todo</button>
+      <button id="exportPNG">Exportar PNG</button>
+      <button id="exportJSON">Exportar JSON</button>
+      <button id="exportPDF">Exportar PDF</button>
+    </div>
+
+    <!-- Contenedor principal del bracket -->
+    <section class="bracket-area" id="bracketArea">
+
+      <!-- Fila superior: Torneo A y Torneo B -->
+      <div class="torneos-superiores">
+        <div class="torneo lado-izq" id="torneoA">
+          <h2>16avos de final (A)</h2>
+          <div class="ronda" id="A-ronda1"></div>
+          <div class="ronda" id="A-ronda2"></div>
+          <div class="ronda" id="A-ronda3"></div>
+        </div>
+
+        <div class="torneo lado-der" id="torneoB">
+          <h2>16avos de final (B)</h2>
+          <div class="ronda" id="B-ronda1"></div>
+          <div class="ronda" id="B-ronda2"></div>
+          <div class="ronda" id="B-ronda3"></div>
+        </div>
+      </div>
+
+      <div class="torneo-final" id="torneoFinal">
+        <h2></h2>
+
+        <div class="final-horizontal">
+
+          <!-- LADO A → hacia el centro -->
+          <div class="lado-final lado-A">
+            <!-- OCTAVOS -->
+            <div class="ronda-final" id="F-A-1"></div>
+
+            <!-- CUARTOS -->
+            <div class="ronda-final" id="F-A-2"></div>
+
+            <!-- SEMIFINAL -->
+            <div class="ronda-final" id="F-A-3"></div>
+
+            
+          </div>
+
+          <!-- SUPER FINAL -->
+          <div class="super-final-zone">
+            <h3>Super Final</h3>
+            <div class="match" id="superMatch">
+              <div class="player" id="super1">Ganador A</div>
+              <div class="player" id="super2">Ganador B</div>
+            </div>
+            <div class="ganador" id="superGanador">🏆</div>
+          </div>
+
+          <!-- LADO B → hacia el centro -->
+          <div class="lado-final lado-B">
+            <!-- OCTAVOS -->
+            <div class="ronda-final" id="F-B-1"></div>
+
+            <!-- CUARTOS -->
+            <div class="ronda-final" id="F-B-2"></div>
+
+            <!-- SEMIFINAL -->
+            <div class="ronda-final" id="F-B-3"></div>
+
+            
+          </div>
+
+        </div>
+      </div>
+
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Hecho por Rister_jin c:</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Librerías para export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+</html>
